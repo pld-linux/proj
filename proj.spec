@@ -1,7 +1,7 @@
 Summary:	Cartographic projection software
 Summary(pl):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.4.5
+Version:	4.4.7
 Release:	1
 Group:		Libraries
 License:	MIT
@@ -10,7 +10,6 @@ Source1:	ftp://ftp.remotesensing.org/pub/proj/OF90-284.pdf
 Source2:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.pdf
 Source3:	ftp://ftp.remotesensing.org/pub/proj/SWISS.pdf
 Source4:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.I2.pdf
-Patch0:		%{name}-am16.patch
 URL:		http://www.remotesensing.org/proj/
 BuildRequires:	automake
 BuildRequires:	autoconf
@@ -77,7 +76,6 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 
 %prep
 %setup -q
-%patch0 -p1
 cp -f %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 
 %build
@@ -105,15 +103,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog README nad/nad.lst
+%doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libproj.so.*.*
 %dir %{_datadir}/proj
 %{_datadir}/proj/GL27
 %{_datadir}/proj/nad27
 %{_datadir}/proj/nad83
+%{_datadir}/proj/nad.lst
 %{_datadir}/proj/proj_def.dat
 %{_datadir}/proj/world
 %{_datadir}/proj/epsg
+%{_datadir}/proj/esri
 
 %files devel
 %defattr(644,root,root,755)
@@ -128,7 +128,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
-%doc *.ps
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 
