@@ -118,7 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libproj.so
-%attr(755,root,root) %{_libdir}/libproj.la
+%{_libdir}/libproj.la
 %{_includedir}/*
 %{_mandir}/man3/*
 
