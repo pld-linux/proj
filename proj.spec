@@ -82,7 +82,7 @@ cp -f %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 
 %build
 rm -f missing
-libtoolize --copy --force
+%{__libtoolize}
 aclocal
 %{__autoconf}
 %{__automake}
