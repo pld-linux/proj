@@ -1,12 +1,12 @@
 Summary:	Cartographic projection software
 Summary(pl):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.4.7
+Version:	4.4.8
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/pub/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	4169ed0ead9fc0cf90da6d1448911418
+# Source0-md5:	1bdfb7bf5df081d029828ed47b780519
 Source1:	ftp://ftp.remotesensing.org/pub/proj/OF90-284.pdf
 # Source1-md5:	00ed1f2109a7a81f1b15e1c19235eed5
 Source2:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.pdf
@@ -32,7 +32,7 @@ Oprogramowanie do rzutów kartograficznych.
 Summary:	proj header files
 Summary(pl):	Pliki nag³ówkowe proj
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This package contains proj header files.
@@ -45,7 +45,7 @@ korzystaj±cych z biblioteki proj.
 Summary:	proj static libraries
 Summary(pl):	Biblioteki statyczne libPropList
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package contains static proj libraries.
@@ -57,7 +57,7 @@ Ten pakiet zawiera statyczne biblioteki proj.
 Summary:	Cartographic projection software
 Summary(pl):	Oprogramowanie do rzutów kartograficznych
 Group:		Applications
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description progs
 Package contains cartographic projection and coordinate system
@@ -71,7 +71,7 @@ wspó³rzêdnych.
 Summary:	Manuals for cartographic projection software
 Summary(pl):	Dokumentacja do proj
 Group:		Documentation
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description doc
 Manuals for cartographic projection software.
