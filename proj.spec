@@ -68,10 +68,10 @@ Ten pakiet zawiera filtry do rzutów kartograficznych i uk³adów
 wspó³rzêdnych.
 
 %package doc
-Summary:       Manuals for cartographic projection software
-Summary(pl):   Dokumentacja do proj
-Group:         Documentation
-Requires:      %{name} = %{version}
+Summary:	Manuals for cartographic projection software
+Summary(pl):	Dokumentacja do proj
+Group:		Documentation
+Requires:	%{name} = %{version}
 
 %description doc
 Manuals for cartographic projection software.
