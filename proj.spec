@@ -6,10 +6,15 @@ Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/pub/proj/%{name}-%{version}.tar.gz
+# Source0-md5:	4169ed0ead9fc0cf90da6d1448911418
 Source1:	ftp://ftp.remotesensing.org/pub/proj/OF90-284.pdf
+# Source1-md5:	00ed1f2109a7a81f1b15e1c19235eed5
 Source2:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.pdf
+# Source2-md5:	94e5c9afe50963ce4360149e7ffb7da6
 Source3:	ftp://ftp.remotesensing.org/pub/proj/SWISS.pdf
+# Source3-md5:	ca67b903d54dc8f6eb626020cb3e3faa
 Source4:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.I2.pdf
+# Source4-md5:	2fb167935a0c7d686e89af419d07c66c
 URL:		http://www.remotesensing.org/proj/
 BuildRequires:	automake
 BuildRequires:	autoconf
