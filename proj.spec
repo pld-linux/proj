@@ -10,7 +10,12 @@ Source1:	ftp://ftp.remotesensing.org/pub/proj/OF90-284.pdf
 Source2:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.pdf
 Source3:	ftp://ftp.remotesensing.org/pub/proj/SWISS.pdf
 Source4:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.I2.pdf
+Patch0:		%{name}-am16.patch
 URL:		http://www.remotesensing.org/proj/
+BuildRequires:	automake
+BuildRequires:	autoconf
+BuildRequires:	libtool
+BuildRequires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,10 +64,10 @@ Ten pakiet zawiera filtry do rzutów kartograficznych i uk³adów
 wspó³rzêdnych.
 
 %package doc
-Summary:	Manuals for cartographic projection software
-Summary(pl):	Dokumentacja do proj
-Group:		Applications
-Requires:	%{name} = %{version}
+Summary:       Manuals for cartographic projection software
+Summary(pl):   Dokumentacja do proj
+Group:         Documentation
+Requires:      %{name} = %{version}
 
 %description doc
 Manuals for cartographic projection software.
@@ -72,12 +77,20 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 
 %prep
 %setup -q
+%patch0 -p1
 cp -f %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 
 %build
-%configure2_13
+rm -f missing
+libtoolize --copy --force
+aclocal
+%{__autoconf}
+%{__automake}
+%configure
 
 %{__make}
+
+for i in *pdf; do pdf2ps $i; done
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -115,9 +128,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
+%doc *.ps
 %attr(755,root,root) %{_bindir}/*
 %{_mandir}/man1/*
 
 %files doc
 %defattr(644,root,root,755)
-%doc OF90-284.pdf PROJ.4.3.I2.pdf PROJ.4.3.pdf SWISS.pdf
+%doc *.ps
