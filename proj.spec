@@ -1,12 +1,12 @@
 Summary:	Cartographic projection software
 Summary(pl):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.4.8
+Version:	4.4.9
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/pub/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	1bdfb7bf5df081d029828ed47b780519
+# Source0-md5:	3cc5c2407c213aadfd154c8df80efd6c
 Source1:	ftp://ftp.remotesensing.org/pub/proj/OF90-284.pdf
 # Source1-md5:	00ed1f2109a7a81f1b15e1c19235eed5
 Source2:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.pdf
@@ -16,10 +16,9 @@ Source3:	ftp://ftp.remotesensing.org/pub/proj/SWISS.pdf
 Source4:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.I2.pdf
 # Source4-md5:	2fb167935a0c7d686e89af419d07c66c
 URL:		http://www.remotesensing.org/proj/
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	autoconf
 BuildRequires:	libtool
-BuildRequires:	ghostscript
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -92,8 +91,6 @@ cp -f %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 
 %{__make}
 
-for i in *pdf; do pdf2ps $i; done
-
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -138,4 +135,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files doc
 %defattr(644,root,root,755)
-%doc *.ps
+%doc *.pdf
