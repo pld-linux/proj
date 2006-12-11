@@ -1,20 +1,15 @@
 Summary:	Cartographic projection software
 Summary(pl):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.4.9
+Version:	4.5.0
 Release:	1
 Group:		Libraries
 License:	MIT
-Source0:	ftp://ftp.remotesensing.org/pub/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	3cc5c2407c213aadfd154c8df80efd6c
-Source1:	ftp://ftp.remotesensing.org/pub/proj/OF90-284.pdf
-# Source1-md5:	00ed1f2109a7a81f1b15e1c19235eed5
-Source2:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.pdf
-# Source2-md5:	94e5c9afe50963ce4360149e7ffb7da6
-Source3:	ftp://ftp.remotesensing.org/pub/proj/SWISS.pdf
-# Source3-md5:	ca67b903d54dc8f6eb626020cb3e3faa
-Source4:	ftp://ftp.remotesensing.org/pub/proj/PROJ.4.3.I2.pdf
-# Source4-md5:	2fb167935a0c7d686e89af419d07c66c
+# use ftp.gdal.org (same IP) because of NS problems with remotesensing.org
+Source0:	ftp://ftp.gdal.org/pub/proj/%{name}-%{version}.tar.gz
+# Source0-md5:	336fc8a12abbc4709e0bc1fb88a77436
+Source1:	ftp://ftp.gdal.org/pub/proj/%{name}-pdf-docs.tar.gz
+# Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 URL:		http://www.remotesensing.org/proj/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -79,13 +74,13 @@ Manuals for cartographic projection software.
 Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 
 %prep
-%setup -q
-cp -f %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
+%setup -q -a1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure
 
@@ -116,6 +111,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/proj/world
 %{_datadir}/proj/epsg
 %{_datadir}/proj/esri
+%{_datadir}/proj/esri.extra
+%{_datadir}/proj/other.extra
 
 %files devel
 %defattr(644,root,root,755)
