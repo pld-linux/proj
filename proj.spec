@@ -6,9 +6,9 @@ Release:	1
 Group:		Libraries
 License:	MIT
 # use ftp.gdal.org (same IP) because of NS problems with remotesensing.org
-Source0:	ftp://ftp.gdal.org/pub/proj/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gdal.org/proj/%{name}-%{version}.tar.gz
 # Source0-md5:	336fc8a12abbc4709e0bc1fb88a77436
-Source1:	ftp://ftp.gdal.org/pub/proj/%{name}-pdf-docs.tar.gz
+Source1:	ftp://ftp.gdal.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 URL:		http://www.remotesensing.org/proj/
 BuildRequires:	autoconf >= 2.59
