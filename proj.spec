@@ -1,5 +1,5 @@
 Summary:	Cartographic projection software
-Summary(pl):	Oprogramowanie do rzut體 kartograficznych
+Summary(pl.UTF-8):   Oprogramowanie do rzut贸w kartograficznych
 Name:		proj
 Version:	4.5.0
 Release:	1
@@ -19,37 +19,37 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Cartographic projection software.
 
-%description -l pl
-Oprogramowanie do rzut體 kartograficznych.
+%description -l pl.UTF-8
+Oprogramowanie do rzut贸w kartograficznych.
 
 %package devel
 Summary:	proj header files
-Summary(pl):	Pliki nag丑wkowe proj
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe proj
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 This package contains proj header files.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag丑wkowe niezb阣ne do tworzenia aplikacji
-korzystaj眂ych z biblioteki proj.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nag艂贸wkowe niezb臋dne do tworzenia aplikacji
+korzystaj膮cych z biblioteki proj.
 
 %package static
 Summary:	proj static libraries
-Summary(pl):	Biblioteki statyczne libPropList
+Summary(pl.UTF-8):   Biblioteki statyczne libPropList
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 This package contains static proj libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Ten pakiet zawiera statyczne biblioteki proj.
 
 %package progs
 Summary:	Cartographic projection software
-Summary(pl):	Oprogramowanie do rzut體 kartograficznych
+Summary(pl.UTF-8):   Oprogramowanie do rzut贸w kartograficznych
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 
@@ -57,21 +57,21 @@ Requires:	%{name} = %{version}-%{release}
 Package contains cartographic projection and coordinate system
 filters.
 
-%description progs -l pl
-Ten pakiet zawiera filtry do rzut體 kartograficznych i uk砤d體
-wsp蟪rz阣nych.
+%description progs -l pl.UTF-8
+Ten pakiet zawiera filtry do rzut贸w kartograficznych i uk艂ad贸w
+wsp贸艂rz臋dnych.
 
 %package doc
 Summary:	Manuals for cartographic projection software
-Summary(pl):	Dokumentacja do proj
+Summary(pl.UTF-8):   Dokumentacja do proj
 Group:		Documentation
 Requires:	%{name} = %{version}-%{release}
 
 %description doc
 Manuals for cartographic projection software.
 
-%description doc -l pl
-Dokumentacja do oprogramowania do rzut體 kartograficznych proj.
+%description doc -l pl.UTF-8
+Dokumentacja do oprogramowania do rzut贸w kartograficznych proj.
 
 %prep
 %setup -q -a1
