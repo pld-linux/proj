@@ -1,5 +1,5 @@
 Summary:	Cartographic projection software
-Summary(pl.UTF-8):   Oprogramowanie do rzutów kartograficznych
+Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
 Version:	4.5.0
 Release:	1
@@ -24,7 +24,7 @@ Oprogramowanie do rzutów kartograficznych.
 
 %package devel
 Summary:	proj header files
-Summary(pl.UTF-8):   Pliki nagłówkowe proj
+Summary(pl.UTF-8):	Pliki nagłówkowe proj
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -37,7 +37,7 @@ korzystających z biblioteki proj.
 
 %package static
 Summary:	proj static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne libPropList
+Summary(pl.UTF-8):	Biblioteki statyczne libPropList
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -49,7 +49,7 @@ Ten pakiet zawiera statyczne biblioteki proj.
 
 %package progs
 Summary:	Cartographic projection software
-Summary(pl.UTF-8):   Oprogramowanie do rzutów kartograficznych
+Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Group:		Applications
 Requires:	%{name} = %{version}-%{release}
 
@@ -63,7 +63,7 @@ współrzędnych.
 
 %package doc
 Summary:	Manuals for cartographic projection software
-Summary(pl.UTF-8):   Dokumentacja do proj
+Summary(pl.UTF-8):	Dokumentacja do proj
 Group:		Documentation
 Requires:	%{name} = %{version}-%{release}
 
