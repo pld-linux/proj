@@ -1,13 +1,13 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.5.0
+Version:	4.6.0
 Release:	1
 Group:		Libraries
 License:	MIT
 # use ftp.gdal.org (same IP) because of NS problems with remotesensing.org
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	336fc8a12abbc4709e0bc1fb88a77436
+# Source0-md5:	975d9b5954869e53523726a9c0e0e070
 Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 URL:		http://www.remotesensing.org/proj/
