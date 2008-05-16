@@ -5,7 +5,6 @@ Version:	4.6.0
 Release:	1
 Group:		Libraries
 License:	MIT
-# use ftp.gdal.org (same IP) because of NS problems with remotesensing.org
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
 # Source0-md5:	975d9b5954869e53523726a9c0e0e070
 Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
@@ -101,7 +100,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README
-%attr(755,root,root) %{_libdir}/libproj.so.*.*
+%attr(755,root,root) %{_libdir}/libproj.so.*.*.*
+%attr(755,root,root) %{_libdir}/libproj.so.0
 %dir %{_datadir}/proj
 %{_datadir}/proj/GL27
 %{_datadir}/proj/nad27
@@ -118,8 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libproj.so
 %{_libdir}/libproj.la
-%{_includedir}/*
-%{_mandir}/man3/*
+%{_includedir}/*.h
+%{_mandir}/man3/pj_init.3*
 
 %files static
 %defattr(644,root,root,755)
