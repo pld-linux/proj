@@ -1,12 +1,12 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.6.1
-Release:	2
+Version:	4.7.0
+Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	7dbaab8431ad50c25669fd3fb28dc493
+# Source0-md5:	927d34623b52e0209ba2bfcca18fe8cd
 Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 URL:		http://www.remotesensing.org/proj/
@@ -23,7 +23,7 @@ Oprogramowanie do rzutów kartograficznych.
 
 %package devel
 Summary:	proj header files
-Summary(pl.UTF-8):	Pliki nagłówkowe proj
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki proj
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -62,7 +62,7 @@ współrzędnych.
 
 %package doc
 Summary:	Manuals for cartographic projection software
-Summary(pl.UTF-8):	Dokumentacja do proj
+Summary(pl.UTF-8):	Dokumentacja do oprogramowania proj
 Group:		Documentation
 Requires:	%{name} = %{version}-%{release}
 
@@ -101,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libproj.so.*.*.*
-%attr(755,root,root) %{_libdir}/libproj.so.0
+%attr(755,root,root) %ghost %{_libdir}/libproj.so.0
 %dir %{_datadir}/proj
 %{_datadir}/proj/GL27
 %{_datadir}/proj/IGNF
@@ -119,7 +119,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libproj.so
 %{_libdir}/libproj.la
-%{_includedir}/*.h
+%{_includedir}/nad_list.h
+%{_includedir}/org_proj4_Projections.h
+%{_includedir}/proj_api.h
+%{_includedir}/projects.h
 %{_mandir}/man3/pj_init.3*
 
 %files static
@@ -128,8 +131,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/cs2cs
+%attr(755,root,root) %{_bindir}/geod
+%attr(755,root,root) %{_bindir}/invgeod
+%attr(755,root,root) %{_bindir}/invproj
+%attr(755,root,root) %{_bindir}/nad2bin
+%attr(755,root,root) %{_bindir}/nad2nad
+%attr(755,root,root) %{_bindir}/proj
+%{_mandir}/man1/cs2cs.1*
+%{_mandir}/man1/geod.1*
+%{_mandir}/man1/nad2nad.1*
+%{_mandir}/man1/proj.1*
 
 %files doc
 %defattr(644,root,root,755)
