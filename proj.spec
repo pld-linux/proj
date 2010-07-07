@@ -87,6 +87,7 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
