@@ -1,17 +1,23 @@
+#
+# Conditional build:
+%bcond_without	java	# Java/JNI support
+#
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.7.0
+Version:	4.8.0
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	927d34623b52e0209ba2bfcca18fe8cd
+# Source0-md5:	d815838c92a29179298c126effbb1537
 Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
+Patch0:		%{name}-missing.patch
 URL:		http://www.remotesensing.org/proj/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
+%{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -74,6 +80,7 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 
 %prep
 %setup -q -a1
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -81,13 +88,13 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{!?with_java:--without-jni}
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_bindir}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -120,10 +127,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libproj.so
 %{_libdir}/libproj.la
-%{_includedir}/nad_list.h
 %{_includedir}/org_proj4_Projections.h
 %{_includedir}/proj_api.h
-%{_includedir}/projects.h
+%{_pkgconfigdir}/proj.pc
 %{_mandir}/man3/pj_init.3*
 
 %files static
@@ -137,11 +143,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/invgeod
 %attr(755,root,root) %{_bindir}/invproj
 %attr(755,root,root) %{_bindir}/nad2bin
-%attr(755,root,root) %{_bindir}/nad2nad
 %attr(755,root,root) %{_bindir}/proj
 %{_mandir}/man1/cs2cs.1*
 %{_mandir}/man1/geod.1*
-%{_mandir}/man1/nad2nad.1*
 %{_mandir}/man1/proj.1*
 
 %files doc
