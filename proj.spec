@@ -14,6 +14,7 @@ Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
 Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Patch0:		%{name}-missing.patch
+Patch1:		%{name}-am.patch
 URL:		http://www.remotesensing.org/proj/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -81,6 +82,7 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 %prep
 %setup -q -a1
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}

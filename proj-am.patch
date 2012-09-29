@@ -1,0 +1,11 @@
+--- proj-4.8.0/src/Makefile.am.orig	2012-03-07 06:58:49.000000000 +0100
++++ proj-4.8.0/src/Makefile.am	2012-09-29 16:13:43.999686530 +0200
+@@ -65,7 +65,7 @@
+ 	jniproj.c pj_mutex.c pj_initcache.c pj_apply_vgridshift.c
+ 
+ 
+-install-exec-local:
++install-exec-hook:
+ 	rm -f $(DESTDIR)$(bindir)/invproj$(EXEEXT)
+ 	(cd $(DESTDIR)$(bindir); ln -s proj$(EXEEXT) invproj$(EXEEXT))
+ 	rm -f $(DESTDIR)$(bindir)/invgeod$(EXEEXT)
