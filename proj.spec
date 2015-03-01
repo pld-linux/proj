@@ -6,7 +6,7 @@ Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
 Version:	4.8.0
-Release:	2
+Release:	3
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
