@@ -5,16 +5,15 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.8.0
-Release:	3
+Version:	4.9.1
+Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	d815838c92a29179298c126effbb1537
+# Source0-md5:	3cbb2a964fd19a496f5f4265a717d31c
 Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
-Patch0:		%{name}-missing.patch
-Patch1:		%{name}-am.patch
+Patch0:		%{name}-am.patch
 URL:		http://www.remotesensing.org/proj/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -82,7 +81,6 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 %prep
 %setup -q -a1
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -111,14 +109,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libproj.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libproj.so.0
+%attr(755,root,root) %ghost %{_libdir}/libproj.so.9
 %dir %{_datadir}/proj
+%{_datadir}/proj/CH
 %{_datadir}/proj/GL27
 %{_datadir}/proj/IGNF
 %{_datadir}/proj/nad27
 %{_datadir}/proj/nad83
 %{_datadir}/proj/nad.lst
-%{_datadir}/proj/proj_def.dat
 %{_datadir}/proj/world
 %{_datadir}/proj/epsg
 %{_datadir}/proj/esri
@@ -129,9 +127,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libproj.so
 %{_libdir}/libproj.la
+%{_includedir}/geodesic.h
+%{_includedir}/org_proj4_PJ.h
 %{_includedir}/org_proj4_Projections.h
 %{_includedir}/proj_api.h
+%{_includedir}/projects.h
 %{_pkgconfigdir}/proj.pc
+%{_mandir}/man3/geodesic.3*
 %{_mandir}/man3/pj_init.3*
 
 %files static
