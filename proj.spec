@@ -5,12 +5,12 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.9.1
+Version:	4.9.2
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	3cbb2a964fd19a496f5f4265a717d31c
+# Source0-md5:	9843131676e31bbd903d60ae7dc76cf9
 Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Patch0:		%{name}-am.patch
@@ -122,6 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/proj/esri
 %{_datadir}/proj/esri.extra
 %{_datadir}/proj/other.extra
+%{_datadir}/proj/proj_def.dat
 
 %files devel
 %defattr(644,root,root,755)
