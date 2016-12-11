@@ -1,12 +1,12 @@
 #
 # Conditional build:
 %bcond_without	java	# Java/JNI support
-#
+
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
 Version:	4.9.2
-Release:	1
+Release:	2
 Group:		Libraries
 License:	MIT
 Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
@@ -71,6 +71,9 @@ Summary:	Manuals for cartographic projection software
 Summary(pl.UTF-8):	Dokumentacja do oprogramowania proj
 Group:		Documentation
 Requires:	%{name} = %{version}-%{release}
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description doc
 Manuals for cartographic projection software.
