@@ -5,16 +5,16 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.9.2
-Release:	2
+Version:	4.9.3
+Release:	1
 Group:		Libraries
 License:	MIT
-Source0:	ftp://ftp.remotesensing.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	9843131676e31bbd903d60ae7dc76cf9
-Source1:	ftp://ftp.remotesensing.org/proj/%{name}-pdf-docs.tar.gz
+Source0:	http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
+# Source0-md5:	d598336ca834742735137c5674b214a1
+Source1:	http://download.osgeo.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Patch0:		%{name}-am.patch
-URL:		http://www.remotesensing.org/proj/
+URL:		http://proj4.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 %{?with_java:BuildRequires:	jdk}
@@ -112,7 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libproj.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libproj.so.9
+%attr(755,root,root) %ghost %{_libdir}/libproj.so.12
 %dir %{_datadir}/proj
 %{_datadir}/proj/CH
 %{_datadir}/proj/GL27
