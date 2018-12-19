@@ -5,12 +5,12 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	4.9.3
+Version:	5.2.0
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	d598336ca834742735137c5674b214a1
+# Source0-md5:	ad285c7d03cbb138d9246e10e1f3191c
 Source1:	http://download.osgeo.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Patch0:		%{name}-am.patch
@@ -112,14 +112,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_libdir}/libproj.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libproj.so.12
+%attr(755,root,root) %ghost %{_libdir}/libproj.so.13
 %dir %{_datadir}/proj
 %{_datadir}/proj/CH
 %{_datadir}/proj/GL27
 %{_datadir}/proj/IGNF
+%{_datadir}/proj/ITRF20??
 %{_datadir}/proj/nad27
 %{_datadir}/proj/nad83
 %{_datadir}/proj/nad.lst
+%{_datadir}/proj/null
 %{_datadir}/proj/world
 %{_datadir}/proj/epsg
 %{_datadir}/proj/esri
@@ -133,7 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libproj.la
 %{_includedir}/geodesic.h
 %{_includedir}/org_proj4_PJ.h
-%{_includedir}/org_proj4_Projections.h
+%{_includedir}/proj.h
 %{_includedir}/proj_api.h
 %{_includedir}/projects.h
 %{_pkgconfigdir}/proj.pc
@@ -146,14 +148,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/cct
 %attr(755,root,root) %{_bindir}/cs2cs
 %attr(755,root,root) %{_bindir}/geod
+%attr(755,root,root) %{_bindir}/gie
 %attr(755,root,root) %{_bindir}/invgeod
 %attr(755,root,root) %{_bindir}/invproj
 %attr(755,root,root) %{_bindir}/nad2bin
 %attr(755,root,root) %{_bindir}/proj
+%{_mandir}/man1/cct.1*
 %{_mandir}/man1/cs2cs.1*
 %{_mandir}/man1/geod.1*
+%{_mandir}/man1/gie.1*
 %{_mandir}/man1/proj.1*
 
 %files doc
