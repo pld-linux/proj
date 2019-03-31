@@ -149,16 +149,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/cs2cs
 %attr(755,root,root) %{_bindir}/cct
+%attr(755,root,root) %{_bindir}/cs2cs
 %attr(755,root,root) %{_bindir}/geod
 %attr(755,root,root) %{_bindir}/gie
 %attr(755,root,root) %{_bindir}/invgeod
 %attr(755,root,root) %{_bindir}/invproj
 %attr(755,root,root) %{_bindir}/proj
 %attr(755,root,root) %{_bindir}/projinfo
-%{_mandir}/man1/cs2cs.1*
 %{_mandir}/man1/cct.1*
+%{_mandir}/man1/cs2cs.1*
 %{_mandir}/man1/geod.1*
 %{_mandir}/man1/gie.1*
 %{_mandir}/man1/proj.1*
