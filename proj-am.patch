@@ -1,11 +1,11 @@
 --- proj-4.8.0/src/Makefile.am.orig	2012-03-07 06:58:49.000000000 +0100
 +++ proj-4.8.0/src/Makefile.am	2012-09-29 16:13:43.999686530 +0200
-@@ -65,7 +65,7 @@
- 	jniproj.c pj_mutex.c pj_initcache.c pj_apply_vgridshift.c
+@@ -222,7 +222,7 @@
+ 	mv $(top_srcdir)/src/wkt2_generated_parser.c.tmp $(top_srcdir)/src/wkt2_generated_parser.c
  
  
--install-exec-local:
-+install-exec-hook:
+-install-exec-local: install-binPROGRAMS
++install-exec-hook: install-binPROGRAMS
  	rm -f $(DESTDIR)$(bindir)/invproj$(EXEEXT)
  	(cd $(DESTDIR)$(bindir); ln -s proj$(EXEEXT) invproj$(EXEEXT))
  	rm -f $(DESTDIR)$(bindir)/invgeod$(EXEEXT)
