@@ -6,13 +6,15 @@ Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
 Version:	6.0.0
-Release:	1
+Release:	2
 Group:		Libraries
 License:	MIT
 Source0:	http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
 # Source0-md5:	08cd21c95e530cd01c5cf58e9f32483a
 Source1:	http://download.osgeo.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
+Source2:	https://raw.githubusercontent.com/OSGeo/proj-datumgrid/master/scripts/nad2bin.c
+# Source2-md5:	d061e9107864c06c997cda0910de81bc
 Patch0:		%{name}-am.patch
 URL:		http://proj4.org/
 BuildRequires:	autoconf >= 2.59
@@ -84,6 +86,7 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 %prep
 %setup -q -a1
 %patch0 -p1
+cp %{SOURCE2} .
 
 %build
 %{__libtoolize}
@@ -96,11 +99,16 @@ Dokumentacja do oprogramowania do rzutów kartograficznych proj.
 
 %{__make}
 
+# build nad2bin, removed from proj but required by e.g. grass.spec
+%{__cc} %{rpmcflags} %{rpmldflags} -o nad2bin nad2bin.c
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install nad2bin $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -155,6 +163,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gie
 %attr(755,root,root) %{_bindir}/invgeod
 %attr(755,root,root) %{_bindir}/invproj
+%attr(755,root,root) %{_bindir}/nad2bin
 %attr(755,root,root) %{_bindir}/proj
 %attr(755,root,root) %{_bindir}/projinfo
 %{_mandir}/man1/cct.1*
