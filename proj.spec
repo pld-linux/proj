@@ -1,27 +1,29 @@
-#
-# Conditional build:
-%bcond_without	java	# Java/JNI support
-
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	6.3.2
+Version:	7.1.1
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	2ca6366e12cd9d34d73b4602049ee480
+# Source0-md5:	b7ce84943dcf2b660b11c2ef9657dad5
 Source1:	http://download.osgeo.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Source2:	https://raw.githubusercontent.com/OSGeo/proj-datumgrid/master/scripts/nad2bin.c
 # Source2-md5:	d061e9107864c06c997cda0910de81bc
 Patch0:		%{name}-am.patch
-URL:		http://proj.org/
+URL:		https://proj.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-%{?with_java:BuildRequires:	jdk}
+BuildRequires:	curl-devel
+BuildRequires:	gtest-devel >= 1.8.0
+BuildRequires:	libstdc++-devel >= 6:4.7
+BuildRequires:	libtiff-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRequires:	rpm-build >= 4.6
+BuildRequires:	sqlite3-devel >= 3.11
+Requires:	sqlite3 >= 3.11
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -35,6 +37,10 @@ Summary:	proj header files
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki proj
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	curl-devel
+Requires:	libstdc++-devel >= 6:4.7
+Requires:	libtiff-devel
+Requires:	sqlite3-devel >= 3.11
 
 %description devel
 This package contains proj header files.
@@ -94,7 +100,7 @@ cp %{SOURCE2} .
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_java:--without-jni}
+	--with-external-gtest
 
 %{__make}
 
@@ -106,6 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libproj.la
 
 install nad2bin $RPM_BUILD_ROOT%{_bindir}
 
@@ -119,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog CITATION NEWS README
 %attr(755,root,root) %{_libdir}/libproj.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libproj.so.15
+%attr(755,root,root) %ghost %{_libdir}/libproj.so.19
 %dir %{_datadir}/proj
 %{_datadir}/proj/CH
 %{_datadir}/proj/GL27
@@ -129,27 +138,24 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/proj/nad27
 %{_datadir}/proj/nad83
 %{_datadir}/proj/nad.lst
-%{_datadir}/proj/null
 %{_datadir}/proj/world
 %{_datadir}/proj/other.extra
 %{_datadir}/proj/proj.db
+%{_datadir}/proj/proj.ini
+%{_datadir}/proj/deformation_model.schema.json
 %{_datadir}/proj/projjson.schema.json
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libproj.so
-%{_libdir}/libproj.la
 %{_includedir}/proj
 %{_includedir}/geodesic.h
-%{_includedir}/org_proj4_PJ.h
 %{_includedir}/proj.h
 %{_includedir}/proj_api.h
 %{_includedir}/proj_constants.h
 %{_includedir}/proj_experimental.h
 %{_includedir}/proj_symbol_rename.h
 %{_pkgconfigdir}/proj.pc
-%{_mandir}/man3/geodesic.3*
-%{_mandir}/man3/pj_init.3*
 
 %files static
 %defattr(644,root,root,755)
@@ -166,12 +172,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/nad2bin
 %attr(755,root,root) %{_bindir}/proj
 %attr(755,root,root) %{_bindir}/projinfo
+%attr(755,root,root) %{_bindir}/projsync
 %{_mandir}/man1/cct.1*
 %{_mandir}/man1/cs2cs.1*
 %{_mandir}/man1/geod.1*
 %{_mandir}/man1/gie.1*
 %{_mandir}/man1/proj.1*
 %{_mandir}/man1/projinfo.1*
+%{_mandir}/man1/projsync.1*
 
 %files doc
 %defattr(644,root,root,755)
