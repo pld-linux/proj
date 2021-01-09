@@ -5,18 +5,18 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	6.1.1
+Version:	6.3.2
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	9a82a3174cacf319d94360a759fbcc8a
+# Source0-md5:	2ca6366e12cd9d34d73b4602049ee480
 Source1:	http://download.osgeo.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Source2:	https://raw.githubusercontent.com/OSGeo/proj-datumgrid/master/scripts/nad2bin.c
 # Source2-md5:	d061e9107864c06c997cda0910de81bc
 Patch0:		%{name}-am.patch
-URL:		http://proj4.org/
+URL:		http://proj.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 %{?with_java:BuildRequires:	jdk}
@@ -134,6 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/proj/world
 %{_datadir}/proj/other.extra
 %{_datadir}/proj/proj.db
+%{_datadir}/proj/projjson.schema.json
 
 %files devel
 %defattr(644,root,root,755)
