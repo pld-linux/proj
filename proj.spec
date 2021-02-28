@@ -73,9 +73,7 @@ Summary:	Manuals for cartographic projection software
 Summary(pl.UTF-8):	Dokumentacja do oprogramowania proj
 Group:		Documentation
 Requires:	%{name} = %{version}-%{release}
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description doc
 Manuals for cartographic projection software.
