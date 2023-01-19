@@ -1,12 +1,12 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	7.1.1
+Version:	7.2.1
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	b7ce84943dcf2b660b11c2ef9657dad5
+# Source0-md5:	befbafd25e65ddf0c26a8321d8bcdcd2
 Source1:	http://download.osgeo.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Source2:	https://raw.githubusercontent.com/OSGeo/proj-datumgrid/master/scripts/nad2bin.c
@@ -144,6 +144,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/proj/proj.ini
 %{_datadir}/proj/deformation_model.schema.json
 %{_datadir}/proj/projjson.schema.json
+%{_datadir}/proj/triangulation.schema.json
 
 %files devel
 %defattr(644,root,root,755)
