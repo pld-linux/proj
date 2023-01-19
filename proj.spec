@@ -21,6 +21,7 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 %{?with_java:BuildRequires:	jdk}
 BuildRequires:	libtool
+BuildRequires:	rpm-build >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
