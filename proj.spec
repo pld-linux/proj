@@ -5,12 +5,12 @@
 Summary:	Cartographic projection software
 Summary(pl.UTF-8):	Oprogramowanie do rzutów kartograficznych
 Name:		proj
-Version:	9.5.1
+Version:	9.6.2
 Release:	1
 Group:		Libraries
 License:	MIT
 Source0:	http://download.osgeo.org/proj/%{name}-%{version}.tar.gz
-# Source0-md5:	07c44ca4a65a0664ce823c8448707c78
+# Source0-md5:	52d09c45de2da7c9bed2120753bd9008
 Source1:	http://download.osgeo.org/proj/%{name}-pdf-docs.tar.gz
 # Source1-md5:	7c8f48f0fddf0d5730f4b27b3f09e6c1
 Source2:	https://raw.githubusercontent.com/OSGeo/proj-datumgrid/master/scripts/nad2bin.c
